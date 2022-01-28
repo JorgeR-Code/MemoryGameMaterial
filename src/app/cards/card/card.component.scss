@@ -1,0 +1,33 @@
+:host{
+  display: block;
+  perspective: 600px;
+}
+
+.card{
+  width: 200px;
+  height: 300px;
+  border-radius: 9px;
+  transform-style: preserve-3d;
+  position: relative;
+  box-shadow: 10px 10px 45px -14px rgba($color: #000000, $alpha: 0.8);
+  cursor: pointer;
+
+  .faceCard{
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    position: absolute;
+
+
+    img{
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      object-fit: cover;
+    }
+  }
+
+  .front{
+    transform: rotateY(180deg);
+  }
+}
