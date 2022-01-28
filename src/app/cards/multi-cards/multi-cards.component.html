@@ -1,1 +1,5 @@
-<app-card *ngFor="let card of arrayCards; let i=index" [card]="card"></app-card>
+<div class="grid">
+
+  <app-card *ngFor="let card of arrayCards; let i=index" [card]="card" (cardFlipped)="flipCards(i)"></app-card>
+
+</div>

@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { cardFormat } from 'src/app/interfaces/card.nterface';
 
 @Component({
@@ -15,7 +15,7 @@ import { cardFormat } from 'src/app/interfaces/card.nterface';
         transform: 'rotateY(180deg)'
       })),
       state('matched', style({
-        transform: 'rotateY(18deg)'
+        transform: 'rotateY(180deg)'
       })),
       transition('default => flipped', [
         animate('400ms')
@@ -31,21 +31,14 @@ export class CardComponent implements OnInit {
   @Input() card: cardFormat = {
     imgURL: '',
     state: 'default'
-  }
+  };
+
+  @Output() cardFlipped = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
 
-  }
-
-  flipCard(){
-
-    if(this.card.state === 'default'){
-      this.card.state = 'flipped'
-    }else{
-      this.card.state = 'default'
-    }
   }
 
 }

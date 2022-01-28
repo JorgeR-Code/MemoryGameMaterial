@@ -1,4 +1,4 @@
-<div class="card" (click)="flipCard()" [@cardFlip]='card.state'>
+<div class="card" (click)="cardFlipped.emit()" [@cardFlip]='card.state'>
   <div class="faceCard front">
     <img [src]="card.imgURL">
   </div>

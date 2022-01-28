@@ -13,10 +13,12 @@
   cursor: pointer;
 
   .faceCard{
+    display: block;
     width: 100%;
     height: 100%;
     border-radius: inherit;
     position: absolute;
+    backface-visibility: hidden;
 
 
     img{
@@ -29,5 +31,12 @@
 
   .front{
     transform: rotateY(180deg);
+  }
+}
+
+@media(max-width: 800px){
+  .card{
+    width: 67px;
+    height: 100px;
   }
 }
