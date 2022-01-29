@@ -14,6 +14,9 @@ export class PlayersService {
   private arrayPlayersPrivate = new BehaviorSubject<playerFormat[]>([]);
   public arrayPlyersPublic = this.arrayPlayersPrivate.asObservable();
 
+  private currentPosition = new BehaviorSubject<number>(0);
+  public currentPositionPublic = this.currentPosition.asObservable();
+
 
   constructor() {
     this.generatePlayers();

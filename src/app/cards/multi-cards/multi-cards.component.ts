@@ -18,6 +18,7 @@ export class MultiCardsComponent implements OnInit {
   arrayPlayers: playerFormat[] = [];
 
   currentPlayer: string = '';
+  position: number = 0;
 
   constructor(private photosService: GetPhotosService, private playerService: PlayersService) { }
 
@@ -31,6 +32,10 @@ export class MultiCardsComponent implements OnInit {
       this.arrayPlayers = players;
       console.log(this.currentPlayer);
       this.currentPlayer = this.arrayPlayers[0].name;
+    });
+
+    this.playerService.currentPositionPublic.subscribe((position) => {
+      this.position = position;
     });
 
   }
@@ -67,9 +72,33 @@ export class MultiCardsComponent implements OnInit {
 
       this.cardsFlipped = [];
 
+      if(result === 'matched'){
+        this.addScore();
+      }else if(result === 'default'){
+
+        this.position ++;
+
+        if(this.position === this.arrayPlayers.length){
+          this.position = 0;
+        }
+
+        this.currentPlayer = this.arrayPlayers[this.position].name;
+
+      }
+
     }, 1000)
 
 
   }
+
+
+  addScore(){
+
+    this.arrayPlayers.map((player) =>{
+      if (this.currentPlayer === player.name){
+        player.score ++;
+      }
+    })
+  };
 
 }
