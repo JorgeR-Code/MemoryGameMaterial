@@ -1,5 +1,5 @@
+<app-score-players [arrayPlayers]="arrayPlayers" [currentPlayer]="currentPlayer"></app-score-players>
+
 <div class="grid">
-
   <app-card *ngFor="let card of arrayCards; let i=index" [card]="card" (cardFlipped)="flipCards(i)"></app-card>
-
 </div>

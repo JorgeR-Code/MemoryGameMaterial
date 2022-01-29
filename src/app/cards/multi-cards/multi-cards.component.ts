@@ -1,7 +1,9 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { cardFormat } from 'src/app/interfaces/card.nterface';
+import { playerFormat } from 'src/app/interfaces/player.interface';
 import { GetPhotosService } from 'src/app/services/get-photos.service';
+import { PlayersService } from 'src/app/services/players.service';
 
 @Component({
   selector: 'app-multi-cards',
@@ -13,13 +15,24 @@ export class MultiCardsComponent implements OnInit {
   arrayCards: cardFormat[] = [];
   cardsFlipped: cardFormat[] = [];
 
-  constructor(private photosService: GetPhotosService) { }
+  arrayPlayers: playerFormat[] = [];
+
+  currentPlayer: string = '';
+
+  constructor(private photosService: GetPhotosService, private playerService: PlayersService) { }
 
   ngOnInit(): void {
 
     this.photosService.arrayCardsPublic.subscribe((packCards) => {
       this.arrayCards = packCards;
     });
+
+    this.playerService.arrayPlyersPublic.subscribe((players) => {
+      this.arrayPlayers = players;
+      console.log(this.currentPlayer);
+      this.currentPlayer = this.arrayPlayers[0].name;
+    });
+
   }
 
   flipCards(index: number){
@@ -52,8 +65,8 @@ export class MultiCardsComponent implements OnInit {
 
       card1.state =  card2.state = result;
 
-      console.log(card1, card2, result)
       this.cardsFlipped = [];
+
     }, 1000)
 
 

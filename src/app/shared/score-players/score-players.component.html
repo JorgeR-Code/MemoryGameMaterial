@@ -1,0 +1,5 @@
+<mat-radio-group class="radioButtons">
+  <mat-radio-button  *ngFor="let player of arrayPlayers; let i=index" [value]="player.name" [checked]="currentPlayer === player.name" [disabled]="currentPlayer !== player.name" [matBadge]="player.score" matBadgeOverlap="false">
+    {{player.name}}
+  </mat-radio-button>
+</mat-radio-group>
