@@ -7,7 +7,7 @@ import { playerFormat } from '../interfaces/player.interface';
 })
 export class PlayersService {
 
-  numberPlayers: number = 4;
+  numberPlayers: number = 2;
 
   arrayPlayers: playerFormat[] = [];
 
@@ -25,6 +25,7 @@ export class PlayersService {
 
   generatePlayers(){
 
+    this.arrayPlayers = [];
     for (let index = 0; index < this.numberPlayers; index++) {
       const newPlayer: playerFormat = {
         name: 'Jugador ' + (index + 1),
@@ -37,5 +38,11 @@ export class PlayersService {
     this.arrayPlayersPrivate.next(this.arrayPlayers);
 
     }
+
+  changePlayers(num: number){
+    this.numberPlayers = num;
+    this.generatePlayers();
+    this.currentPosition.next(0);
+  };
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GetPhotosService } from 'src/app/services/get-photos.service';
+import { PlayersService } from 'src/app/services/players.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private numberPlayer: PlayersService, private restarCards: GetPhotosService) { }
 
   ngOnInit(): void {
+
   }
+
+
+  changePlayersNumber(num: number){
+     this.numberPlayer.changePlayers(num);
+     this.restarCards.restarPhotos();
+
+  };
 
 }

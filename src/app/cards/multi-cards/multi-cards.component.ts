@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { cardFormat } from 'src/app/interfaces/card.nterface';
 import { playerFormat } from 'src/app/interfaces/player.interface';
@@ -20,6 +19,8 @@ export class MultiCardsComponent implements OnInit {
   currentPlayer: string = '';
   position: number = 0;
 
+  numberMatchs = 0;
+
   constructor(private photosService: GetPhotosService, private playerService: PlayersService) { }
 
   ngOnInit(): void {
@@ -30,7 +31,6 @@ export class MultiCardsComponent implements OnInit {
 
     this.playerService.arrayPlyersPublic.subscribe((players) => {
       this.arrayPlayers = players;
-      console.log(this.currentPlayer);
       this.currentPlayer = this.arrayPlayers[0].name;
     });
 
@@ -73,7 +73,13 @@ export class MultiCardsComponent implements OnInit {
       this.cardsFlipped = [];
 
       if(result === 'matched'){
+
         this.addScore();
+
+        this.numberMatchs ++;
+        if(this.numberMatchs === (this.arrayCards.length/2)){
+          console.log("juego terminado");
+        }
       }else if(result === 'default'){
 
         this.position ++;

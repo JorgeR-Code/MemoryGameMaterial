@@ -54,6 +54,7 @@ export class GetPhotosService {
 
   concateCards(){
 
+    this.arrayCards = [];
     this.arrayURLs.forEach((URL) =>{
 
       let newCard: cardFormat = {
@@ -67,4 +68,9 @@ export class GetPhotosService {
 
     this.arrayCardsPrivate.next(this.arrayCards.sort(() => Math.random() - 0.5));
   };
+
+
+  restarPhotos(){
+    this.concateCards();
+  }
 }

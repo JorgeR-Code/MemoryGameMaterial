@@ -1,1 +1,26 @@
-<p>toolbar works!</p>
+<mat-toolbar color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="changePlayersNumber(1)">
+      <mat-icon>person</mat-icon>
+      <span>Solitario</span>
+    </button>
+    <button mat-menu-item (click)="changePlayersNumber(2)">
+      <mat-icon>looks_two</mat-icon>
+      <span>Jugadores</span>
+    </button>
+    <button mat-menu-item (click)="changePlayersNumber(3)">
+      <mat-icon>looks_3</mat-icon>
+      <span>Jugadores</span>
+    </button>
+    <button mat-menu-item (click)="changePlayersNumber(4)">
+      <mat-icon>looks_4</mat-icon>
+      <span>Jugadores</span>
+    </button>
+  </mat-menu>
+  <span>
+    MyMemoryGame
+  </span>
+</mat-toolbar>
